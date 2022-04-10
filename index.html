@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registro de pessoas </title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" type="text/javascript" src="js/utils.js"></script>
+  <script type="module" type="text/javascript" src="js/getDatas.js"></script>
+</head>
+<body>
+  <div id="main-container">
+    <h1>Check in Connect</h1> </h1>
+    <form id="register-form">
+      <div id="data" class="full-box">
+        <label for="data">Id do Culto</label>
+        <input type="text" name="cultId" id="data" placeholder="digite o id do Culto">
+      </div>
+      <div id="npulse" class="half-box spacing">
+        <label for="braceletNumber">Numero da Pulseira</label>
+        <input type="text" name="braceletNumber" id="npulse" placeholder="Digite o numero da sua Pulseira" >
+    </div>
+      <div class="half-box spacing">
+          <label for="connectName">Nome do Connect</label>
+          <input type="text" name="connectName" id="name" placeholder="Digite seu nome" data-required data-min-length="3" data-max-length="40">
+      </div>
+      <div class="half-box spacing">
+        <label for="connectFone">informe seu WhatsApp</label>
+        <input type="tel" name="connectFone" id="wppcon" placeholder="Digite seu WhatsApp " data-max-length="12" >
+      </div>
+      <div>
+      <div class="full-box spacing">
+        <label for="connectBirthday">Data de Nascimento</label>
+        <input type="date" name="connectBirthday" id="datanascimento" placeholder="dd-mm-yyyy">
+      </div>
+      <div class="full-box spacing">
+          <label for="responsableName">Nome do responsável</label>
+          <input type="text" name="responsableName" id="nomeresponsavel" placeholder="Digite o nome do responsável" data-required data-min-length="3" data-max-length="40" >
+      </div>
+      
+      <div class="full-box spacing">
+        <label for="responsableFone">Número do Responsável</label>
+        <input type="tel" name="responsableFone" id="wpprespo" placeholder="Digite numero do telefone do responsável " data-max-length="12" >
+      </div>
+      <div class="full-box spacing">
+        <label for="">Gostaria de participar do grupo responsáveis</label>
+        <select name="grupoPais" id="Gp">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+      </div>
+        <div class="observation-box">
+          <label for="observation">Observações</label>
+          <input type="text" name="observation" id="observation" placeholder="Alguma observação">
+        </div>
+        <div>
+        <input type="checkbox" name="agreement" id="agreement">
+        <label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso</a></label>
+      </div>
+      <div class="send-button">
+        <input id="btn-submit" type="submit" value="Criar cadastro">
+      </div>
+    </form>
+    
+    <div class=""> 
+      <table class="connect-datas">
+        <tr>
+          <th>CultoId</th>
+          <th>Data</th>
+          <th>Horario</th>
+          <th>Connect</th>
+          <th>Numero Pulseira</th>
+          <th>Responsavel</th>
+          <th>Telefone Responsavel</th>
+        </tr>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <p class="error-validation template"></p>
+  <script type="module" type="text/javascript" src="js/connectForm.js"></script>
+</body>
+</html>
