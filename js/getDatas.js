@@ -1,8 +1,13 @@
 import { requestForm, connectAPi } from './utils.js'
 
 const getConnectDatasByCultId = async () =>{
+
+  const urlDatas = new URL(window.location.href)
+  const params = urlDatas.searchParams
+
+  const cultoId = params?.get('cultoId')
   
-  const response = await requestForm(connectAPi + '/cult/2?relationship=1')
+  const response = await requestForm(connectAPi + `/cult/${cultoId}?relationship=1`)
   const cultDatas = await response.json()
 
   return cultDatas
