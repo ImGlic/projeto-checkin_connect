@@ -10,60 +10,102 @@
   <script type="module" type="text/javascript" src="js/getDatas.js"></script>
 </head>
 <body>
-  <div id="main-container">
+  <div class="associate-container">
+    <h1>Connect já Registrado</h1>
+    <div class="associate-forms">
+      <div class="get-connect-datas">
+        <form id="get-connect-datas">
+          <div class="full-box">
+            <label for="text">Nome do Connect</label>
+            <input type="text" name="connectName" id="name" placeholder="Digite seu nome" data-required data-min-length="3" data-max-length="40">
+          </div>
+          <div class="send-button">
+            <input id="btn-get" type="submit" value="Obter dados">
+          </div>
+        </form>
+  
+        <div id="connect-table">
+          <table class="connect-datas">
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+            </tr>
+            <tbody id="tableBody-connect"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <form class="associate-connect" id="associate-connect">
+        <div id="data" class="half-box">
+          <label for="data">ID do Culto</label>
+          <input type="text" name="cultId" id="data" placeholder="Ex: 1">
+        </div>
+        <div id="data" class="half-box">
+          <label for="data">ID do Connect</label>
+          <input type="text" name="connectId" id="data" placeholder="Ex: 1">
+        </div>
+        <div id="npulse" class="half-box">
+          <label for="braceletNumber">Numero da Pulseira</label>
+          <input type="text" name="braceletNumber" id="npulse" placeholder="Ex: 1234" >
+        </div>
+        <div class="full-box">
+          <label for="observation">Observações</label>
+          <input type="text" name="observation" id="observation" placeholder="Alguma observação">
+        </div>
+        <div class="send-button">
+          <input id="btn-associate" type="submit" value="Associar connect">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="create-container">
     <h1>Check in Connect</h1> </h1>
     <form id="register-form">
-      <div id="data" class="full-box">
-        <label for="data">Id do Culto</label>
-        <input type="text" name="cultId" id="data" placeholder="digite o id do Culto">
+      <div id="data" class="half-box">
+        <label for="data">ID do Culto</label>
+        <input type="text" name="cultId" id="data" placeholder="Ex: 1">
       </div>
-      <div id="npulse" class="half-box spacing">
+      <div id="npulse" class="half-box">
         <label for="braceletNumber">Numero da Pulseira</label>
-        <input type="text" name="braceletNumber" id="npulse" placeholder="Digite o numero da sua Pulseira" >
-    </div>
-      <div class="half-box spacing">
+        <input type="text" name="braceletNumber" id="npulse" placeholder="Ex: 1234" >
+      </div>
+      <div class="full-box">
           <label for="connectName">Nome do Connect</label>
-          <input type="text" name="connectName" id="name" placeholder="Digite seu nome" data-required data-min-length="3" data-max-length="40">
+          <input type="text" name="connectName" id="name" placeholder="Ex: Matheus Santos" data-required data-min-length="3" data-max-length="40">
       </div>
-      <div class="half-box spacing">
-        <label for="connectFone">informe seu WhatsApp</label>
-        <input type="tel" name="connectFone" id="wppcon" placeholder="Digite seu WhatsApp " data-max-length="12" >
-      </div>
-      <div>
-      <div class="full-box spacing">
+      <div class="half-box">
         <label for="connectBirthday">Data de Nascimento</label>
         <input type="date" name="connectBirthday" id="datanascimento" placeholder="dd-mm-yyyy">
       </div>
-      <div class="full-box spacing">
+      <div class="full-box">
           <label for="responsableName">Nome do responsável</label>
-          <input type="text" name="responsableName" id="nomeresponsavel" placeholder="Digite o nome do responsável" data-required data-min-length="3" data-max-length="40" >
+          <input type="text" name="responsableName" id="nomeresponsavel" placeholder="Ex: João Santos" data-required data-min-length="3" data-max-length="40" >
       </div>
-      
-      <div class="full-box spacing">
-        <label for="responsableFone">Número do Responsável</label>
-        <input type="tel" name="responsableFone" id="wpprespo" placeholder="Digite numero do telefone do responsável " data-max-length="12" >
+    
+      <div class="half-box">
+        <label for="responsableFone">Telefone do Responsável</label>
+        <input type="tel" name="responsableFone" id="wpprespo" placeholder="Ex: 21987654321" maxlength="11" >
       </div>
-      <div class="full-box spacing">
-        <label for="">Gostaria de participar do grupo responsáveis</label>
+
+      <div class="half-box">
+        <label for="">Participa do grupo responsáveis</label>
         <select name="grupoPais" id="Gp">
           <option>Sim</option>
           <option>Não</option>
         </select>
       </div>
-        <div class="observation-box">
-          <label for="observation">Observações</label>
-          <input type="text" name="observation" id="observation" placeholder="Alguma observação">
-        </div>
-        <div>
-        <input type="checkbox" name="agreement" id="agreement">
-        <label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso</a></label>
+      <div class="full-box">
+        <label for="observation">Observações</label>
+        <input type="text" name="observation" id="observation" placeholder="Alguma observação">
       </div>
       <div class="send-button">
         <input id="btn-submit" type="submit" value="Criar cadastro">
       </div>
     </form>
     
-    <div class=""> 
+    <div id="cult-table">
       <table class="connect-datas">
         <tr>
           <th>CultoId</th>
@@ -74,13 +116,12 @@
           <th>Responsavel</th>
           <th>Telefone Responsavel</th>
         </tr>
-        <tbody id="tableBody"></tbody>
+        <tbody id="tableBody-cult"></tbody>
       </table>
     </div>
-
   </div>
 
-  <p class="error-validation template"></p>
+  <!-- <p class="error-validation template"></p> -->
   <script type="module" type="text/javascript" src="js/connectForm.js"></script>
 </body>
 </html>

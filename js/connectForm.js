@@ -188,14 +188,13 @@ class Validator {
 
 }
 
+
 let form = document.getElementById('register-form');
 let submit = document.getElementById('btn-submit');
 
-let validator = new Validator();
-
-// evento de envio do form, que valida os inputs
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  document.getElementById('btn-submit').disabled = true;
 
   const url = connectAPi + '/connect'
   const formDatas = new FormData(form)
@@ -206,7 +205,6 @@ form.addEventListener('submit', async (e) => {
     connect: {
       nome: formDatas.get('connectName'),
       dataNascimento: formDatas.get('connectBirthday'),
-      telefone: formDatas.get('connectFone'),
       responsavels: [
         {
           nome: formDatas.get('responsableName'),
@@ -217,8 +215,6 @@ form.addEventListener('submit', async (e) => {
     },
     observacoes: formDatas.get('observation'),
   }
-
-  validator.validate(form);
   
   const response = await requestForm(url, datas, 'POST')
 
@@ -227,6 +223,42 @@ form.addEventListener('submit', async (e) => {
     alert('Algo deu errado, preencha seus dados novamente')
     return
   }
+  document.getElementById('btn-submit').disabled = false;
   alert('Cadastro efetuado com sucesso!')
   document.location.reload(true)
 })
+
+const associateConnect = async () => {
+  let form = document.getElementById('associate-connect');
+  let submit = document.getElementById('btn-associate');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submit.disabled = true;
+
+    const url = connectAPi + '/connectCult'
+    const formDatas = new FormData(form)
+
+    const datas = {
+      cultoId: parseInt(formDatas.get('cultId')),
+      numeroPulseira: parseInt(formDatas.get('braceletNumber')),
+      connectId: parseInt(formDatas.get('connectId')),
+      observacoes: formDatas.get('observation'),
+    }
+    
+    const response = await requestForm(url, datas, 'POST')
+
+    if (!response.ok) {
+      console.log('Error >>', await response.text())
+      alert('Algo deu errado, preencha os dados novamente')
+      return
+    }
+    submit.disabled = false;
+    alert('Associação feita com sucesso!')
+    document.location.reload(true)
+  })
+}
+
+(async function () { 
+  await associateConnect()
+})()

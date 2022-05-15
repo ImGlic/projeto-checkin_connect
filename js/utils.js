@@ -1,4 +1,5 @@
-const connectAPi = 'https://connect-api-logoinha.herokuapp.com'
+// const connectAPi = 'https://connect-api-logoinha.herokuapp.com'
+const connectAPi = 'http://localhost:8888'
 
 const requestForm = async (url, datas={}, method='GET') => {
 
