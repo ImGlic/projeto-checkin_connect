@@ -158,3 +158,52 @@ table {
 #cult-table {
   display: none;
 }
+
+@media screen and (max-width: 750px) {
+  body {
+    background-color: #FFF;
+  }
+
+  .associate-container {
+    width: 95%;
+    padding: 0 5px;
+    margin: 20px auto;
+    display: flex;
+  }
+
+  .associate-forms {
+    flex-direction: column-reverse;
+  }
+
+  .get-connect-datas, .associate-connect {
+    width: 100%;
+  }
+
+  .get-connect-datas { padding-bottom: 12px; }
+
+  #create-container {
+    width: 95%;
+    padding: 0 5px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .half-box { 
+    width: 35%;
+    margin-right: 10px;
+  }
+
+  .full-box {
+    width: 100%
+  }
+
+  #birthDate {
+    width: 40%;
+  }
+
+  .connect-datas.with-cult-datas {
+    display: inline-block;
+    overflow-x: auto;
+  }
+}

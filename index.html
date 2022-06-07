@@ -15,7 +15,7 @@
     <div class="associate-forms">
       <div class="get-connect-datas">
         <form id="get-connect-datas">
-          <div class="full-box">
+          <div class="full-box" id="name">
             <label for="text">Nome do Connect</label>
             <input type="text" name="connectName" id="name" placeholder="Digite seu nome" data-required data-min-length="3" data-max-length="40">
           </div>
@@ -75,7 +75,7 @@
           <label for="connectName">Nome do Connect</label>
           <input type="text" name="connectName" id="name" placeholder="Ex: Matheus Santos" data-required data-min-length="3" data-max-length="40">
       </div>
-      <div class="half-box">
+      <div class="half-box" id="birthDate">
         <label for="connectBirthday">Data de Nascimento</label>
         <input type="date" name="connectBirthday" id="datanascimento" placeholder="dd-mm-yyyy">
       </div>
@@ -106,7 +106,7 @@
     </form>
     
     <div id="cult-table">
-      <table class="connect-datas">
+      <table class="connect-datas with-cult-datas">
         <tr>
           <th>CultoId</th>
           <th>Data</th>
