@@ -6,6 +6,8 @@ const getConnectDatasByCultId = async () =>{
   const params = urlDatas.searchParams
 
   const cultoId = params?.get('cultoId')
+
+  if (!cultoId) return false
   
   const response = await requestForm(connectAPi + `/cult/${cultoId}?relationship=1`)
   const cultDatas = await response.json()
@@ -14,15 +16,18 @@ const getConnectDatasByCultId = async () =>{
 }
 
 const loadCultTableData = (datas) => {
-  if (!datas){
+  const connects = datas?.connects
+
+  if (!connects){
     document.getElementById("cult-table").style.display = "none"
     return
   }
-  
+
+  document.getElementById("num-total-connect").innerHTML = datas?.amountConnect
   document.getElementById("cult-table").style.display = "block"
   const table = document.getElementById("tableBody-cult")
 
-  datas?.connects.forEach( item => {
+  connects.forEach( item => {
     let row = table.insertRow()
 
     let id = row.insertCell(0)
