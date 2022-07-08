@@ -43,7 +43,7 @@ const loadCultTableData = (datas) => {
     connectName.innerHTML = item.nome
     
     let braceletNumber = row.insertCell(4)
-    braceletNumber.innerHTML = item.connectCulto.numeroPulseira
+    braceletNumber.innerHTML = item.connect_culto.numeroPulseira
     
     let responsableName = row.insertCell(5)
     responsableName.innerHTML = item.responsavels[0].nome

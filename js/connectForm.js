@@ -236,7 +236,7 @@ const associateConnect = async () => {
     e.preventDefault();
     submit.disabled = true;
 
-    const url = connectAPi + '/connectCult'
+    const url = connectAPi + '/connect/associate'
     const formDatas = new FormData(form)
 
     const datas = {
