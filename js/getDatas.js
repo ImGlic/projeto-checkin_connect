@@ -19,13 +19,13 @@ const loadCultTableData = (datas) => {
   const connects = datas?.connects
 
   if (!connects){
-    document.getElementById("cult-table").style.display = "none"
+    document.querySelector("#cult-table").style.display = "none"
     return
   }
 
-  document.getElementById("num-total-connect").innerHTML = datas?.amountConnect
-  document.getElementById("cult-table").style.display = "block"
-  const table = document.getElementById("tableBody-cult")
+  document.querySelector("#num-total-connect").innerHTML = datas?.amountConnect
+  document.querySelector("#cult-table").style.display = "block"
+  const table = document.querySelector("#tableBody-cult")
 
   connects.forEach( item => {
     let row = table.insertRow()
@@ -49,7 +49,7 @@ const loadCultTableData = (datas) => {
     responsableName.innerHTML = item.responsavels[0].nome
     
     let responsableFone = row.insertCell(6)
-    responsableFone.innerHTML = item.responsavels[0].telefone
+    hidePhoneData(responsableFone, item.responsavels[0].telefone)
   })
 }
 
@@ -71,9 +71,9 @@ const getConnectDatasByName = async (name) =>{
 const loadConnectTableData = (datas) => {
   console.log(datas)
   
-  document.getElementById("connect-table").style.display = "block"
+  document.querySelector("#connect-table").style.display = "block"
   
-  const table = document.getElementById("tableBody-connect")
+  const table = document.querySelector("#tableBody-connect")
   table.innerHTML = ''
 
   datas.forEach( item => {
@@ -90,17 +90,36 @@ const loadConnectTableData = (datas) => {
   })
 }
 
+const hidePhoneData = (phoneElement, originalValue) => {
+  phoneElement.setAttribute('class', 'phoneData hide')
+  const hideData = '***********'
+  phoneElement.innerHTML = hideData
 
-(async function () { 
+  phoneElement.addEventListener('click', (e) => {
+    e.preventDefault()
+    const currentValue = phoneElement.innerText
+    if (!currentValue.includes('*')) {
+      phoneElement.setAttribute('class', 'phoneData hide')
+      phoneElement.innerHTML = hideData
+    } else {
+      phoneElement.setAttribute('class', 'phoneData')
+      phoneElement.innerHTML = originalValue
+    }
+  })
+}
+
+const cultConnectTable = async () => {
   const connectDatas = await getConnectDatasByCultId()
 
   loadCultTableData(connectDatas)
-  
-  let form = document.getElementById('get-connect-datas')
+}
+
+const connectTable = async () => {
+  let form = document.querySelector('#get-connect-datas')
   
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    document.getElementById('btn-get').disabled = true
+    document.querySelector('#btn-get').disabled = true
   
     const formDatas = new FormData(form)
   
@@ -108,13 +127,18 @@ const loadConnectTableData = (datas) => {
   
     const connectDatas = await getConnectDatasByName(name)
 
-    document.getElementById('btn-get').disabled = false
+    document.querySelector('#btn-get').disabled = false
 
     if (!connectDatas.length) {
-      document.getElementById("connect-table").style.display = "none"
+      document.querySelector("#connect-table").style.display = "none"
       return
     }
 
     loadConnectTableData(connectDatas)
   })
+}
+
+(async function () { 
+  cultConnectTable()
+  connectTable()
 })()

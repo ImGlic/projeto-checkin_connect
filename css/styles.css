@@ -177,6 +177,15 @@ table {
   display: none;
 }
 
+.phoneData.hide {
+  font-size: 1.3rem;
+}
+
+.phoneData {
+  cursor: pointer;
+  font-size: 1rem
+}
+
 @media screen and (max-width: 750px) {
   body {
     background-color: #FFF;

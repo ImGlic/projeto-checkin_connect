@@ -9,14 +9,14 @@ const requestForm = async (url, datas={}, method='GET') => {
         options = { 
             method,
             headers: {
-              'Content-Type': 'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify(body)
         }
     }
-  
+
     const response = await fetch( url, options)
-  
+
     return response
 }
 
