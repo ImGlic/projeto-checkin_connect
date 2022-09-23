@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="Pt-br">
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" type="text/javascript" src="js/utils.js"></script>
   <script type="module" type="text/javascript" src="js/getDatas.js"></script>
+  </style>
 </head>
 <body>
   <div class="associate-container">
@@ -19,9 +21,7 @@
             <label for="text">Nome do Connect</label>
             <input type="text" name="connectName" id="name" placeholder="Digite seu nome" data-required data-min-length="3" data-max-length="40">
           </div>
-          <div class="send-button">
-            <input id="btn-get" type="submit" value="Obter dados">
-          </div>
+          <div id="sendButton"></div>
         </form>
   
         <div id="connect-table">
@@ -53,8 +53,7 @@
           <label for="observation">Observações</label>
           <input type="text" name="observation" id="observation" placeholder="Alguma observação">
         </div>
-        <div class="send-button">
-          <input id="btn-associate" type="submit" value="Associar connect">
+        <div id="sendButton_container"></div>
         </div>
       </form>
     </div>
@@ -100,9 +99,7 @@
         <label for="observation">Observações</label>
         <input type="text" name="observation" id="observation" placeholder="Alguma observação">
       </div>
-      <div class="send-button">
-        <input id="btn-submit" type="submit" value="Criar cadastro">
-      </div>
+      <div id="sendButtonCriar"></div>
     </form>
     
     <div id="cult-table">
@@ -127,5 +124,51 @@
 
   <!-- <p class="error-validation template"></p> -->
   <script type="module" type="text/javascript" src="js/connectForm.js"></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>  
+
+  <script type="text/javascript">
+
+    class AssociarConnect extends React.Component{
+      render(){
+        return React.createElement('button', {} , 'Associar Connect');
+      }  
+    }
+    const domContainer = document.querySelector('#sendButton_container' );
+    ReactDOM.render(React.createElement(AssociarConnect ), domContainer );
+
+    class Button extends React.Component{
+      render(){
+        return React.createElement('button', {} , 'Obter Dados');
+      }  
+    }
+    const domContainer1 = document.querySelector('#sendButton');
+    ReactDOM.render(React.createElement(Button), domContainer1 );
+    
+    class ButtonCriar extends React.Component{
+      render(){
+        return React.createElement('button', {} , 'Criar Cadastro');
+      }  
+    }
+    const domContainer2 = document.querySelector('#sendButtonCriar');
+    ReactDOM.render(React.createElement(ButtonCriar), domContainer2 );
+
+    
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
